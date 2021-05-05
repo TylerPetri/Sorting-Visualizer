@@ -83,8 +83,8 @@ export default class SortingVisualizer extends React.Component {
           setTimeout(()=> {
             barTwoStyle.backgroundColor = PRIMARY_COLOR
             barOneStyle.backgroundColor = PRIMARY_COLOR
-          } , 40)
-        }, i * 40);
+          } , 60)
+        }, i * 60);
     }
   }
 
@@ -144,7 +144,7 @@ export default class SortingVisualizer extends React.Component {
         <div className="btn-container">
         <button onClick={() => this.resetArray()}>Generate New Array</button>
           <button onClick={() => this.mergeSort()}>Merge Sort (5ms)</button>
-          <button onClick={() => this.quickSort()}>Quick Sort (40ms)</button>
+          <button onClick={() => this.quickSort()}>Quick Sort (60ms)</button>
           <button onClick={() => this.heapSort()}>Heap Sort (30ms)</button>
           <button onClick={() => this.bubbleSort()}>Bubble Sort (5ms)</button>
         </div>
