@@ -2,10 +2,11 @@ import React from 'react';
 import {getMergeSortAnimations} from '../sortingAlgorithms/Merge-Sort.js';
 import {getQuickSortAnimations} from '../sortingAlgorithms/Quick-Sort';
 import {getHeapSortAnimations} from '../sortingAlgorithms/Heap-Sort';
+import {getBubbleSortAnimations} from '../sortingAlgorithms/Bubble-Sort'
 import './SortingVisualizer.css';
 
 // Change this value for the speed of the animations.
-const ANIMATION_SPEED_MS = 5;
+const ANIMATION_SPEED_MS = 30;
 
 // Change this value for the number of bars (value) in the array.
 const NUMBER_OF_ARRAY_BARS = 100;
@@ -50,13 +51,13 @@ export default class SortingVisualizer extends React.Component {
         setTimeout(() => {
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
-        }, i * ANIMATION_SPEED_MS);
+        }, i * 5);
       } else {
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
           barOneStyle.height = `${newHeight}px`;
-        }, i * ANIMATION_SPEED_MS);
+        }, i * 5);
       }
     }
   }
@@ -82,20 +83,32 @@ export default class SortingVisualizer extends React.Component {
   }
 
   heapSort() {
-    const animations = getHeapSortAnimations(this.state.array);
-    console.log(animations)
-    for (let i = 0; i < animations.length; i++){
-      const arrayBars = document.getElementsByClassName('array-bar');
-       setTimeout(() => {
-          const [barOneIdx, height] = animations[i];
-          const barOneStyle = arrayBars[barOneIdx].style;
-          barOneStyle.height = `${height}px`
-       }, i * ANIMATION_SPEED_MS)
-    }
+    // const animations = getHeapSortAnimations(this.state.array);
+    // console.log(animations)
+    // for (let i = 0; i < animations.length; i++){
+    //   const arrayBars = document.getElementsByClassName('array-bar');
+    //    setTimeout(() => {
+    //       const [barOneIdx, barTwoIdx, height] = animations[i];
+    //       const barOneStyle = arrayBars[barOneIdx].style;
+    //       const barTwoStyle = arrayBars[barTwoIdx].style;
+    //       barOneStyle.height = `${height}px`
+    //    }, i * ANIMATION_SPEED_MS)
+    // }
   }
 
   bubbleSort() {
-    // We leave it as an exercise to the viewer of this code to implement this method.
+    const animations = getBubbleSortAnimations(this.state.array)
+    for (let i = 0; i < animations.length; i++){
+      const arrayBars = document.getElementsByClassName('array-bar')
+      setTimeout(() => {
+        const [barOneIdx, barTwoIdx] = animations[i]
+        const barOneStyle = arrayBars[barOneIdx].style;
+        const barTwoStyle = arrayBars[barTwoIdx].style;
+        let temp = barOneStyle.height
+        barOneStyle.height = barTwoStyle.height
+        barTwoStyle.height = temp
+      }, i * ANIMATION_SPEED_MS)
+    }
   }
 
   render() {

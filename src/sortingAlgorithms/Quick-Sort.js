@@ -47,10 +47,5 @@ function quicksort(array, animations) {
     }
     return items;
   }
-
-  console.log('Pre Sort:', array.join(' '));
-  var result = quickSortAlgo(array, 0, array.length - 1, animations);
-  console.log(array.length);
-  console.log('Post Sort:', result.join(' '));
-  console.log('DONE!');
+  quickSortAlgo(array, 0, array.length - 1, animations);
 }
