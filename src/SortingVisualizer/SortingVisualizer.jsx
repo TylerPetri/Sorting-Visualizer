@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import {RangeStepInput} from 'react-range-step-input'
 import {getMergeSortAnimations} from '../sortingAlgorithms/Merge-Sort.js';
 import {getQuickSortAnimations} from '../sortingAlgorithms/Quick-Sort';
 import {getHeapSortAnimations} from '../sortingAlgorithms/Heap-Sort';
@@ -23,6 +24,8 @@ export default class SortingVisualizer extends React.Component {
 
     this.state = {
       array: [],
+      value1: 50,
+      value2: 150
     };
   }
 
@@ -33,33 +36,36 @@ export default class SortingVisualizer extends React.Component {
   resetArray() {
     const array = [];
     for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
-      array.push(randomIntFromInterval(5, 250));
+      array.push(randomIntFromInterval(5, 400));
     }
     this.setState({array});
   }
 
   mergeSort() {
-    const animations = getMergeSortAnimations(this.state.array);
-    for (let i = 0; i < animations.length; i++) {
-      const arrayBars = document.getElementsByClassName('array-bar');
-      const isColorChange = i % 3 !== 2;
-      if (isColorChange) {
-        const [barOneIdx, barTwoIdx] = animations[i];
-        const barOneStyle = arrayBars[barOneIdx].style;
-        const barTwoStyle = arrayBars[barTwoIdx].style;
-        const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
-        setTimeout(() => {
-          barOneStyle.backgroundColor = color;
-          barTwoStyle.backgroundColor = color;
-        }, i * 5);
-      } else {
-        setTimeout(() => {
-          const [barOneIdx, newHeight] = animations[i];
-          const barOneStyle = arrayBars[barOneIdx].style;
-          barOneStyle.height = `${newHeight}px`;
-        }, i * 5);
-      }
-    }
+    // const animations = getMergeSortAnimations(this.state.array);
+    // for (let i = 0; i < animations.length; i++) {
+    //   const arrayBars = document.getElementsByClassName('array-bar');
+    //   const isColorChange = i % 3 !== 2;
+    //   if (isColorChange) {
+    //     const [barOneIdx, barTwoIdx] = animations[i];
+    //     const barOneStyle = arrayBars[barOneIdx].style;
+    //     const barTwoStyle = arrayBars[barTwoIdx].style;
+    //     setTimeout(() => {
+    //       barOneStyle.backgroundColor = SECONDARY_COLOR;
+    //       barTwoStyle.backgroundColor = SECONDARY_COLOR;
+    //       setTimeout(() => {
+    //         barOneStyle.backgroundColor = PRIMARY_COLOR;
+    //         barTwoStyle.backgroundColor = PRIMARY_COLOR;
+    //       }, 20)
+    //     }, i * 20);
+    //   } else {
+    //     setTimeout(() => {
+    //       const [barOneIdx, newHeight] = animations[i];
+    //       const barOneStyle = arrayBars[barOneIdx].style;
+    //       barOneStyle.height = `${newHeight}px`;
+    //     }, i * 20);
+    //   }
+    // }
   }
 
   quickSort() {
@@ -83,17 +89,25 @@ export default class SortingVisualizer extends React.Component {
   }
 
   heapSort() {
-    // const animations = getHeapSortAnimations(this.state.array);
-    // console.log(animations)
-    // for (let i = 0; i < animations.length; i++){
-    //   const arrayBars = document.getElementsByClassName('array-bar');
-    //    setTimeout(() => {
-    //       const [barOneIdx, barTwoIdx, height] = animations[i];
-    //       const barOneStyle = arrayBars[barOneIdx].style;
-    //       const barTwoStyle = arrayBars[barTwoIdx].style;
-    //       barOneStyle.height = `${height}px`
-    //    }, i * ANIMATION_SPEED_MS)
-    // }
+    const animations = getHeapSortAnimations(this.state.array);
+    for (let i = 0; i < animations.length; i++){
+      const arrayBars = document.getElementsByClassName('array-bar');
+       setTimeout(() => {
+          const [barOneIdx, barTwoIdx] = animations[i];
+          const barOneStyle = arrayBars[barOneIdx].style;
+          const barTwoStyle = arrayBars[barTwoIdx].style;
+          let temp = barOneStyle.height
+          barOneStyle.height = barTwoStyle.height
+          barTwoStyle.height = temp
+          barOneStyle.backgroundColor = SECONDARY_COLOR;
+          barTwoStyle.backgroundColor = 'PURPLE';
+          setTimeout(() => {
+            barOneStyle.backgroundColor = PRIMARY_COLOR;
+            barTwoStyle.backgroundColor = PRIMARY_COLOR;
+          }, ANIMATION_SPEED_MS)
+
+       }, i * ANIMATION_SPEED_MS)
+    }
   }
 
   bubbleSort() {
@@ -107,8 +121,19 @@ export default class SortingVisualizer extends React.Component {
         let temp = barOneStyle.height
         barOneStyle.height = barTwoStyle.height
         barTwoStyle.height = temp
-      }, i * ANIMATION_SPEED_MS)
+        barTwoStyle.backgroundColor = SECONDARY_COLOR
+        setTimeout(() => barTwoStyle.backgroundColor = PRIMARY_COLOR, 5)
+      }, i * 5)
     }
+  }
+
+  onChange(e) {
+    const newVal = e.target.value;
+    this.setState({value1: newVal})
+  }
+  onChange2(e) {
+    const newVal = e.target.value;
+    this.setState({value2: newVal})
   }
 
   render() {
@@ -118,10 +143,28 @@ export default class SortingVisualizer extends React.Component {
       <div className="wrapper">
         <div className="btn-container">
         <button onClick={() => this.resetArray()}>Generate New Array</button>
-          <button onClick={() => this.mergeSort()}>Merge Sort (5 ms)</button>
-          <button onClick={() => this.quickSort()}>Quick Sort (40 ms)</button>
-          <button onClick={() => this.heapSort()}>Heap Sort</button>
-          <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+          <button onClick={() => this.mergeSort()}>Merge Sort (5ms)</button>
+          <button onClick={() => this.quickSort()}>Quick Sort (40ms)</button>
+          <button onClick={() => this.heapSort()}>Heap Sort (30ms)</button>
+          <button onClick={() => this.bubbleSort()}>Bubble Sort (5ms)</button>
+        </div>
+        <div className="options">
+          <div className="speed">
+            Speed: {this.state.value1}
+            <RangeStepInput
+              min={1} max={100}
+              value={this.state.value1} step={1}
+              onChange={this.onChange.bind(this)}
+            />
+          </div>
+          <div className="bars">
+            Bar: {this.state.value2}
+            <RangeStepInput
+              min={1} max={300}
+              value={this.state.value2} step={1}
+              onChange={this.onChange2.bind(this)}
+            />
+          </div>
         </div>
         <div className="array-container">
           {array.map((value, idx) => (
