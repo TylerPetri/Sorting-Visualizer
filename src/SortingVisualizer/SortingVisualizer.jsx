@@ -42,30 +42,30 @@ export default class SortingVisualizer extends React.Component {
   }
 
   mergeSort() {
-    // const animations = getMergeSortAnimations(this.state.array);
-    // for (let i = 0; i < animations.length; i++) {
-    //   const arrayBars = document.getElementsByClassName('array-bar');
-    //   const isColorChange = i % 3 !== 2;
-    //   if (isColorChange) {
-    //     const [barOneIdx, barTwoIdx] = animations[i];
-    //     const barOneStyle = arrayBars[barOneIdx].style;
-    //     const barTwoStyle = arrayBars[barTwoIdx].style;
-    //     setTimeout(() => {
-    //       barOneStyle.backgroundColor = SECONDARY_COLOR;
-    //       barTwoStyle.backgroundColor = SECONDARY_COLOR;
-    //       setTimeout(() => {
-    //         barOneStyle.backgroundColor = PRIMARY_COLOR;
-    //         barTwoStyle.backgroundColor = PRIMARY_COLOR;
-    //       }, 20)
-    //     }, i * 20);
-    //   } else {
-    //     setTimeout(() => {
-    //       const [barOneIdx, newHeight] = animations[i];
-    //       const barOneStyle = arrayBars[barOneIdx].style;
-    //       barOneStyle.height = `${newHeight}px`;
-    //     }, i * 20);
-    //   }
-    // }
+    const animations = getMergeSortAnimations(this.state.array);
+    for (let i = 0; i < animations.length; i++) {
+      const arrayBars = document.getElementsByClassName('array-bar');
+      const isColorChange = i % 3 !== 2;
+      // if (isColorChange) {
+        // const [barOneIdx, barTwoIdx] = animations[i];
+        // const barOneStyle = arrayBars[barOneIdx].style;
+        // const barTwoStyle = arrayBars[barTwoIdx].style;
+        // setTimeout(() => {
+        //   barOneStyle.backgroundColor = SECONDARY_COLOR;
+        //   barTwoStyle.backgroundColor = SECONDARY_COLOR;
+        //   setTimeout(() => {
+        //     barOneStyle.backgroundColor = PRIMARY_COLOR;
+        //     barTwoStyle.backgroundColor = PRIMARY_COLOR;
+        //   }, 20)
+        // }, i * 20);
+      // } else {
+        setTimeout(() => {
+          const [barOneIdx, newHeight] = animations[i];
+          const barOneStyle = arrayBars[barOneIdx].style;
+          barOneStyle.height = `${newHeight}px`;
+        }, i * 20);
+      // }
+    }
   }
 
   quickSort() {
