@@ -1,18 +1,16 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  padding-top: 30px;
-  justify-content: center;
   height: 100%;
+  background-color: rgb(143, 143, 143);
 }
 
 .array-container {
-  /* height: 100%; */
   width: 100%;
   position: absolute;
-  top: 150px;
-  /* display: flex; */
-  /* justify-content: center; */
+  top: 250px;
+  background-color: rgb(143, 143, 143);
+  height: 400px;
 }
 
 .array-bar {
@@ -21,9 +19,24 @@
   margin: 0 1px;
 }
 
-.options {
+.btn-container {
+  background-color: rgb(80, 80, 80);
+  padding: 30px;
   display: flex;
-  gap: 10px;
+  align-items: center;
   justify-content: center;
-  margin: 10px;
+}
+
+button {
+  height: 75px;
+  width: 150px;
+  border: 3px solid turquoise;
+  font-family: 'Do Hyeon';
+  font-size: 1.2rem;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgba(209, 54, 209, 0.603);
+  color: gold;
 }

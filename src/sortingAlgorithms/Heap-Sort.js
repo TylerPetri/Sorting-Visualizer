@@ -1,4 +1,4 @@
-export function getHeapSortAnimations(arr) {
+export default function getHeapSortAnimations(arr) {
   const animations = [];
   if (arr.length <= 1) return arr;
   heapsort(arr, animations);

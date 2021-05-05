@@ -1,4 +1,4 @@
-export function getBubbleSortAnimations(array) {
+export default function getBubbleSortAnimations(array) {
   const animations = [];
   if (array.length <= 1) return array;
   bubbleSort(array, animations);

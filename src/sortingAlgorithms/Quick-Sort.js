@@ -1,4 +1,4 @@
-export function getQuickSortAnimations(array) {
+export default function getQuickSortAnimations(array) {
   const animations = [];
   if (array.length <= 1) return array;
   quicksort(array, animations);
