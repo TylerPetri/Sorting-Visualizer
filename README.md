@@ -1,6 +1,6 @@
 ## Sorting Visualizer
 
-* Merge Sort
-* Quick Sort
-* Heap Sort
-* Bubble Sort
+- Merge Sort (complete - colors could be smoother)
+- Quick Sort (complete)
+- Heap Sort (in progress)
+- Bubble Sort (complete - no colors)
