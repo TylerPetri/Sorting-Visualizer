@@ -12,7 +12,7 @@ function quicksort(array, animations) {
     items[secondIndex] = temp;
   }
 
-  function partition(items, left, right, barTwo) {
+  function partition(items, left, right) {
     var pivot = items[left];
     var i = left - 1;
     var j = right + 1;

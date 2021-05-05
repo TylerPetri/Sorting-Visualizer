@@ -2,6 +2,7 @@ export function getHeapSortAnimations(array) {
   const animations = [];
   if (array.length <= 1) return array;
   heapsort(array, animations);
+  console.log(array);
   return animations;
 }
 
@@ -12,17 +13,36 @@ function heapsort(array, animations) {
     items[secondIndex] = temp;
   }
 
-  function maxHeap() {
-    let current = 0;
-    let index = 0;
-    for (let i = 0; i < array.length; i++) {
-      if (current < array[i]) {
-        current = array[i];
-        index = i;
+  function selectionSort(items) {
+    var len = items.length;
+    var min;
+
+    for (var i = 0; i < len; i++) {
+      // set index of minimum to this position
+      min = i;
+
+      // check the rest of the array to see if anything is smaller
+      for (var j = i + 1; j < len; j++) {
+        if (items[j] > items[min]) {
+          min = j;
+        }
+      }
+
+      // if the current position isn't the minimum, swap it and the minimum
+      if (i !== min) {
+        swap(items, i, min);
       }
     }
-    swap(array, 0, index);
-    animations.push([index]);
+
+    return items;
   }
-  maxHeap();
+
+  // ================================================
+  // FUNCTION CALL
+  // ================================================
+  console.log('PRE-SORT');
+  console.log(array.join(' '));
+  console.log('---------------------------');
+  console.log('POST-SORT');
+  console.log(selectionSort(array).join(' '));
 }
