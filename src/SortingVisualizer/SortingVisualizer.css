@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+.array-container {
+  height: 300px;
+  width: 100%;
+  position: absolute;
+  top: 75px;
+}
+
+.array-bar {
+  width: 2px;
+  display: inline-block;
+  margin: 0 1px;
+}
