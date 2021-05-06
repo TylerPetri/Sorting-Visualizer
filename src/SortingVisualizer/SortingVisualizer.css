@@ -19,12 +19,17 @@
   margin: 0 1px;
 }
 
-.btn-container {
+nav {
   background-color: rgb(80, 80, 80);
+}
+
+.btn-container {
   padding: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .resetArrayBtn {

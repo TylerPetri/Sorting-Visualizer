@@ -107,18 +107,20 @@ function SortingVisualizer() {
   return (
     <>
       <div className="wrapper">
-        <div className="btn-container">
-          <button className="resetArrayBtn" onClick={() => resetArray()}>
-            Generate New Array
-          </button>
-          <div className="sort">
-            <button onClick={() => mergeSort()}>Merge Sort</button>
-            <button onClick={() => quickSort()}>Quick Sort</button>
-            <button onClick={() => heapSort()}>Heap Sort</button>
-            <button onClick={() => bubbleSort()}>Bubble Sort</button>
+        <nav className="nav">
+          <div className="btn-container">
+            <button className="resetArrayBtn" onClick={() => resetArray()}>
+              Generate New Array
+            </button>
+            <div className="sort">
+              <button onClick={() => mergeSort()}>Merge Sort</button>
+              <button onClick={() => quickSort()}>Quick Sort</button>
+              <button onClick={() => heapSort()}>Heap Sort</button>
+              <button onClick={() => bubbleSort()}>Bubble Sort</button>
+            </div>
+            <div className="fill"></div>
           </div>
-          <div className="fill"></div>
-        </div>
+        </nav>
 
         <div className="array-container">
           {array.map((value, idx) => (
