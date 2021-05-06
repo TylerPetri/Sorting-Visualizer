@@ -10,7 +10,7 @@ Simple Sorting Visualizer. Generate a new array and select the sorting algorithm
 
 Link to the application: https://tylerpetri.github.io/Sorting-Visualizer/
 
-![gif](https://media.giphy.com/media/G92v9TwDgP5vM82MRl/giphy.gif)
+![gif](https://media.giphy.com/media/SyCrzY7OdXGAz3F9v2/giphy.gif)
 
 ## Running the tests
 
