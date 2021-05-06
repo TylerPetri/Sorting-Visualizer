@@ -8,19 +8,55 @@ import './SortingVisualizer.css';
 
 function SortingVisualizer() {
   const [array, setArray] = useState([]);
-  const [NUMBER_OF_ARRAY_BARS, setBars] = useState(100);
+  const [NUMBER_OF_ARRAY_BARS, setBars] = useState();
   const [ANIMATION_SPEED_MS, setSpeed] = useState(30);
   const [running, setRunning] = useState(false);
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions(),
+  );
 
   const PRIMARY_COLOR = 'turquoise';
   const SECONDARY_COLOR = 'red';
 
-  useEffect(() => resetArray(), []);
+  function getWindowDimensions() {
+    const {innerWidth: width, innerHeight: height} = window;
+    return {
+      width,
+      height,
+    };
+  }
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+    window.addEventListener('resize', handleResize);
+    resetArray();
+    return () => window.removeEventListener('resize', handleResize);
+  }, [windowDimensions]);
 
   function resetArray() {
+    let NUMBER_OF_ARRAY_BARS;
+    let height;
     const array = [];
-    for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
-      array.push(randomIntFromInterval(5, 400));
+
+    if (windowDimensions.width < 640) {
+      setBars(50);
+      NUMBER_OF_ARRAY_BARS = 50;
+    } else {
+      setBars(100);
+      NUMBER_OF_ARRAY_BARS = 100;
+    }
+
+    if (windowDimensions.height < 666) {
+      height = 200;
+      array.push(200);
+    } else {
+      height = 400;
+      array.push(400);
+    }
+    for (let i = 0; i < NUMBER_OF_ARRAY_BARS - 1; i++) {
+      array.push(randomIntFromInterval(5, height));
     }
     setArray(array);
   }
@@ -104,6 +140,10 @@ function SortingVisualizer() {
     setBars(newVal);
   }
 
+  function test() {
+    console.log(windowDimensions, NUMBER_OF_ARRAY_BARS);
+  }
+
   return (
     <>
       <div className="wrapper">
@@ -113,15 +153,24 @@ function SortingVisualizer() {
               Generate New Array
             </button>
             <div className="sort">
-              <button onClick={() => mergeSort()}>Merge Sort</button>
-              <button onClick={() => quickSort()}>Quick Sort</button>
-              <button onClick={() => heapSort()}>Heap Sort</button>
-              <button onClick={() => bubbleSort()}>Bubble Sort</button>
+              <button onClick={() => mergeSort()} className="funcBtn">
+                Merge Sort
+              </button>
+              <button onClick={() => quickSort()} className="funcBtn">
+                Quick Sort
+              </button>
+              <button onClick={() => heapSort()} className="funcBtn">
+                Heap Sort
+              </button>
+              <button onClick={() => bubbleSort()} className="funcBtn">
+                Bubble Sort
+              </button>
             </div>
-            <div className="fill"></div>
+            <button className="fill" onClick={test}>
+              test
+            </button>
           </div>
         </nav>
-
         <div className="array-container">
           {array.map((value, idx) => (
             <div

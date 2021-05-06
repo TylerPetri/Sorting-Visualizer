@@ -10,7 +10,18 @@
   position: absolute;
   top: 250px;
   background-color: rgb(143, 143, 143);
-  height: 400px;
+  height: max-content;
+}
+
+@media (max-width: 959px) {
+  .array-container {
+    top: 275px;
+  }
+  @media (min-height: 774px) {
+    .array-container {
+      top: 350px;
+    }
+  }
 }
 
 .array-bar {
@@ -36,12 +47,38 @@ nav {
   /* margin-right: 50px; */
 }
 
+.sort {
+  height: max-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 button {
-  height: 75px;
+  height: 85px;
   width: 150px;
   border: 3px solid turquoise;
   font-family: 'Do Hyeon';
   font-size: 1.2rem;
+  padding: 0 5px;
+}
+
+@media (max-width: 535px) {
+  .fill {
+    display: none;
+  }
+}
+
+@media (max-width: 445px) {
+  button {
+    width: 95px;
+  }
+}
+
+@media (max-width: 340px) {
+  .funcBtn {
+    width: 75px;
+  }
 }
 
 button:hover {
