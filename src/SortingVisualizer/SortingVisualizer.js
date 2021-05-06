@@ -119,12 +119,11 @@ function SortingVisualizer() {
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName('array-bar');
       setTimeout(() => {
-        const [barOneIdx, barTwoIdx] = animations[i];
+        const [barOneIdx, barTwoIdx, height1, height2] = animations[i];
         const barOneStyle = arrayBars[barOneIdx].style;
         const barTwoStyle = arrayBars[barTwoIdx].style;
-        let temp = barOneStyle.height;
-        barOneStyle.height = barTwoStyle.height;
-        barTwoStyle.height = temp;
+        barOneStyle.height = `${height1}px`;
+        barTwoStyle.height = `${height2}px`;
         barTwoStyle.backgroundColor = SECONDARY_COLOR;
         setTimeout(() => (barTwoStyle.backgroundColor = PRIMARY_COLOR), 5);
       }, i * 5);

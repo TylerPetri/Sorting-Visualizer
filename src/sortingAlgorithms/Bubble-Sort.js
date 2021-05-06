@@ -20,7 +20,7 @@ function bubbleSort(array, animations) {
     for (let i = 0; i < array.length - 1 - round; i++) {
       if (array[i] > array[i + 1]) {
         swap(array, i, i + 1);
-        animations.push([i, i + 1]);
+        animations.push([i, i + 1, array[i], array[i + 1]]);
         sorted = false;
       }
     }
