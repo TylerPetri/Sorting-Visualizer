@@ -24,7 +24,11 @@
   padding: 30px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.resetArrayBtn {
+  /* margin-right: 50px; */
 }
 
 button {
@@ -39,4 +43,9 @@ button:hover {
   cursor: pointer;
   background-color: rgba(209, 54, 209, 0.603);
   color: gold;
+}
+
+.fill {
+  width: 150px;
+  height: 75px;
 }
