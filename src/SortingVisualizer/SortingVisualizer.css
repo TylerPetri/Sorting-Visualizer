@@ -63,13 +63,13 @@ button {
   padding: 0 5px;
 }
 
-@media (max-width: 535px) {
+@media (max-width: 630px) {
   .fill {
     display: none;
   }
 }
 
-@media (max-width: 445px) {
+@media (max-width: 449px) {
   button {
     width: 95px;
   }

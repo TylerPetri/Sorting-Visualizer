@@ -140,10 +140,6 @@ function SortingVisualizer() {
     setBars(newVal);
   }
 
-  function test() {
-    console.log(windowDimensions, NUMBER_OF_ARRAY_BARS);
-  }
-
   return (
     <>
       <div className="wrapper">
@@ -166,9 +162,7 @@ function SortingVisualizer() {
                 Bubble Sort
               </button>
             </div>
-            <button className="fill" onClick={test}>
-              test
-            </button>
+            <div className="fill"></div>
           </div>
         </nav>
         <div className="array-container">
