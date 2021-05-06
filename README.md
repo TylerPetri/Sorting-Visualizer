@@ -4,7 +4,7 @@
 
 ## Description
 
-Simple Sorting Visualizer. Generate a new array, click the sort you wish to see!
+Simple Sorting Visualizer. Generate a new array and select the sorting algorithm you wish to visualize!
 
 ## Deployed Application
 
