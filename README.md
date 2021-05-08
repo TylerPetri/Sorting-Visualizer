@@ -30,7 +30,7 @@ There are many ways in which you can participate in the project, for example:
 
 ## Authors
 
-Sole author (excluding merge sort)
+Sole author
 
 ## License
 
