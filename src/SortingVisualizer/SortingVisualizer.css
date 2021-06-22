@@ -53,8 +53,8 @@ nav {
 button {
   height: 85px;
   width: 150px;
-  border: 3px solid turquoise;
-  background-color: goldenrod;
+  border: 1px solid rgb(0, 184, 255);
+  background-color: #fcec0c;
   font-family: 'Permanent Marker', cursive;
   font-size: 1.2rem;
   padding: 0 5px;
@@ -80,8 +80,8 @@ button {
 
 button:hover {
   cursor: pointer;
-  background-color: rgba(209, 54, 209, 0.603);
-  color: gold;
+  background-color: purple;
+  color: #fcec0c;
 }
 
 .fill {
