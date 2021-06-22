@@ -128,15 +128,6 @@ function SortingVisualizer() {
     }
   }
 
-  function onChange(e) {
-    const newVal = e.target.value;
-    setSpeed(newVal);
-  }
-  function onChange2(e) {
-    const newVal = e.target.value;
-    setBars(newVal);
-  }
-
   return (
     <>
       <div className="wrapper">
