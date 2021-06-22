@@ -13,7 +13,7 @@ function SortingVisualizer() {
     getWindowDimensions(),
   );
 
-  const PRIMARY_COLOR = 'turquoise';
+  const PRIMARY_COLOR = 'purple';
   const SECONDARY_COLOR = 'red';
 
   function getWindowDimensions() {
