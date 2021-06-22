@@ -1,5 +1,4 @@
-import React, {Component, useState, useEffect} from 'react';
-import {RangeStepInput} from 'react-range-step-input';
+import React, {useState, useEffect} from 'react';
 import getMergeSortAnimations from '../sortingAlgorithms/Merge-Sort.js';
 import getQuickSortAnimations from '../sortingAlgorithms/Quick-Sort';
 import getHeapSortAnimations from '../sortingAlgorithms/Heap-Sort';
@@ -10,7 +9,6 @@ function SortingVisualizer() {
   const [array, setArray] = useState([]);
   const [NUMBER_OF_ARRAY_BARS, setBars] = useState();
   const [ANIMATION_SPEED_MS, setSpeed] = useState(30);
-  const [running, setRunning] = useState(false);
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions(),
   );
