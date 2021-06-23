@@ -80,8 +80,9 @@ button {
 
 button:hover {
   cursor: pointer;
-  background-color: purple;
+  background-color: rgb(0, 184, 255);
   color: #fcec0c;
+  text-shadow: 1px 1px black;
 }
 
 .fill {
